@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disneyland California</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+      </style>
+    <style>
+      header{
+        font-family: 'Playfair Display', serif;
+        color:white;
+        text-align: center;
+        font-size: 100px;
+        margin:30px;
+        margin-bottom:100px;
+      }
+      #date{
+        margin-bottom: 20px;
+        margin-top:20px;
+        font-family: 'Fredoka One', cursive;
+        margin-left:18px;
+      }
+      #faq{
+        text-align: center;
+        color: white;
+        font-family: 'Fredoka One', cursive;
+        margin-top:50px;
+        width:800px;
+        margin:auto;
+        margin-bottom:100px;
+       }
+      body{
+        background-image: url("star.jpg");
+        font-family: 'Fredoka One', cursive;
+      }
+      #tabs{  
+        font-family: 'Fredoka One', cursive;
+        width:900px;
+        margin:auto;
+      }
+      #tabs-1, .tabs-2, .tabs-3{
+        font-family: 'Fredoka One', cursive;
+      }
+      #age{ 
+        font-family: 'Fredoka One', cursive;
+      }
+      #agelabel{
+        font-family: 'Fredoka One', cursive;
+      }
+      #Tooltip{
+        font-family: 'Fredoka One', cursive;
+        padding:20px;
+      }
+      *{
+        box-sizing:border-box;
+        margin:0px;
+      }
+/*............................. GALLERY CSS............................................ */
+      #gallerytxt{
+        font-family: 'Fredoka One', cursive;
+        text-align: center;
+        font-size:30px;
+        color:white;
+        padding-bottom: 100px;
+        margin-top:181px;
+      }
+      .World{
+          width:800px;
+          height:500px;
+          margin-left:auto;
+          margin-right: auto;
+          display: block;
+          margin-bottom:200px;
+          border: 2px solid white;
+      }
+      .castle{
+          width:800px;
+          height:500px;
+          margin-left:auto;
+          margin-right: auto;
+          display: block;
+          margin-bottom:200px;
+          border: 2px solid white;
+      }
+      .flo{
+          width:800px;
+          height:500px;
+          margin-left:auto;
+          margin-right: auto;
+          display: block;
+          margin-bottom:200px;
+          border: 2px solid white;
+      }
+      .mickey{
+        width:490px;
+        padding-bottom: 180px;
+        margin-left:auto;
+        margin-right: auto;
+        display: block;
+      }
+    </style>
+<!--Tabs........................................................-->
+    <script>
+      $( function() {
+        $( "#tabs" ).tabs();
+      } );
+      </script>
+<!--Date........................................................-->
+      <script>
+      $( function() {
+      $( "#datepicker" ).datepicker();
+    } );
+    </script>
+<!--Accordian...................................................-->
+     <script>
+    $( function() {
+      $( "#accordion" ).accordion();
+    } );
+    </script>
+<!--Tooltip.....................................................-->
+      <script>
+        $( function() {
+          $( document ).tooltip();
+        } );
+        </script>
+<!--Progressbar.................................................-->
+      <script>
+          $( function() {
+            var progressTimer,
+              progressbar = $( "#progressbar" ),
+              progressLabel = $( ".progress-label" ),
+              dialogButtons = [{
+                text: "Cancel Download",
+                click: closeDownload
+              }],
+              dialog = $( "#dialog" ).dialog({
+                autoOpen: false,
+                closeOnEscape: false,
+                resizable: false,
+                buttons: dialogButtons,
+                open: function() {
+                  progressTimer = setTimeout( progress, 2000 );
+                },
+                beforeClose: function() {
+                  downloadButton.button( "option", {
+                    disabled: false,
+                    label: "Start Download"
+                  });
+                }
+              }),
+              downloadButton = $( "#downloadButton" )
+                .button()
+                .on( "click", function() {
+                  $( this ).button( "option", {
+                    disabled: true,
+                    label: "Downloading..."
+                  });
+                  dialog.dialog( "open" );
+                });
+         
+            progressbar.progressbar({
+              value: false,
+              change: function() {
+                progressLabel.text( "Current Progress: " + progressbar.progressbar( "value" ) + "%" );
+              },
+              complete: function() {
+                progressLabel.text( "Complete!" );
+                dialog.dialog( "option", "buttons", [{
+                  text: "Close",
+                  click: closeDownload
+                }]);
+                $(".ui-dialog button").last().trigger( "focus" );
+              }
+            });
+         
+            function progress() {
+              var val = progressbar.progressbar( "value" ) || 0;
+         
+              progressbar.progressbar( "value", val + Math.floor( Math.random() * 3 ) );
+         
+              if ( val <= 99 ) {
+                progressTimer = setTimeout( progress, 50 );
+              }
+            }
+         
+            function closeDownload() {
+              clearTimeout( progressTimer );
+              dialog
+                .dialog( "option", "buttons", dialogButtons )
+                .dialog( "close" );
+              progressbar.progressbar( "value", false );
+              progressLabel
+                .text( "Starting download..." );
+              downloadButton.trigger( "focus" );
+            }
+          } );
+        </script>
+</head>
+
+<body>
+  <header>
+    <p>Disneyland</p>
+  </header> 
+<!--Tabs...........................................-->
+  <div id="tabs">
+    <ul>
+      <li><a href="#tabs-1">About Disneyland</a></li>
+      <li><a href="#tabs-2">Things to do on your visit</a></li>
+      <li><a href="#tabs-3">Booking your trip</a></li>
+    </ul>
+    <br>
+    <div id="tabs-1">
+      <!--Age/Tooltip....................................-->
+        <div id="Tooltip">
+          <p>
+            <label id="agelabel" for="age">Your age:</label>
+            <input id="age" title="We ask for your age only for statistical purposes.">
+          </p>
+          </div> 
+      <p>Disneyland is a theme park in Anaheim, California. Opened in 1955, it was the first theme park opened by The Walt Disney Company and the only one designed and constructed under the direct supervision of Walt Disney. Disney initially envisioned building a tourist attraction adjacent to his studios in Burbank to entertain fans who wished to visit; however, he soon felt that the proposed site was too small. After hiring the Stanford Research Institute to perform a feasibility study determining an appropriate site for his project, Disney bought a 160-acre (65 ha) site near Anaheim in 1953. The park was designed by a creative team hand-picked by Walt from internal and outside talent. They founded WED Enterprises, the precursor to today's Walt Disney Imagineering. Construction began in 1954 and the park was unveiled during a special televised press event on the ABC Television Network on July 17, 1955. Since its opening, Disneyland has undergone expansions and major renovations, including the addition of New Orleans Square in 1966, Bear Country in 1972, Mickey's Toontown in 1993, and Star Wars: Galaxy's Edge in 2019; Disney California Adventure Park also opened in 2001 at the site of Disneyland's original parking lot.</p>
+      <br><br>
+      </div>    
+    <div id="tabs-2">
+    <br>
+      <p>There are many things to do in disneyland! From numerous attractions to live shows, character interactions and places to eat and regain energy. Disneyland has everything you want so that you spend all your money on your whining children, leaving you absolutly broke, your kids exhausted, and Disneyland richer than ever, everyone wins!       <br><br></p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed est illum nemo perferendis dolorum, vero, repudiandae atque illo ratione a magni, suscipit ea explicabo tempora. Facilis aperiam magnam praesentium distinctio?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem asperiores, alias magni vero officiis excepturi delectus deleniti, placeat, omnis autem mollitia provident est possimus cupiditate eligendi culpa labore distinctio. Iste! </p>
+    </div>
+    <div id="tabs-3">
+      <br>
+      <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.<br></p>
+      <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.      <br></p>
+    <!--Date...........................................-->
+      <div id="date">
+        <p>Pick a date to book your trip! 
+            <input type="text" id="datepicker">
+        </p>
+        </div>  
+    </div>
+  </div>
+<!--Gallery........................................-->
+<div id="gallery">
+  <p id="gallerytxt"><u>A glimpse into the park</u></p>
+  <div><img src="mickey.png" class="mickey"></div>
+  <div><img src="castles.jpg" class="castle"></div>
+  <div><img src="smolwrld.jpg_large" class="World"></div> 
+  <div><img src="flo.webp" class="flo"></div>
+</div>
+<!--FAQ/Accordian..................................-->
+<div id="faq">
+  <p>Frequently Asked Questions:</p>
+ <div id="accordion">
+    <h3>Section 1</h3>
+    <div>
+      <p>
+      Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+      ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
+      amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
+      odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+      </p>
+    </div>
+    <h3>Section 2</h3>
+    <div>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque iusto atque magnam repellat excepturi accusantium voluptates laborum vel laudantium. Modi corporis saepe impedit cumque. Illum, provident! Placeat eveniet corrupti repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, in! In nam libero consectetur nulla sunt cum rem quae deleniti eligendi quos, consequuntur aut numquam voluptate ad eos ullam commodi?
+      </p>
+    </div>
+    <h3>Section 3</h3>
+    <div>
+      <p>
+      Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
+      Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
+      ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
+      lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
+      </p>
+    </div>
+    <h3>Section 4</h3>
+    <div>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe nemo sed ad eveniet aspernatur omnis dolorum incidunt facilis alias sequi nesciunt ipsum voluptatibus quos tenetur repudiandae, facere autem harum praesentium! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum pariatur in eveniet. Natus, quas placeat quisquam quaerat suscipit cum, ratione officia assumenda fuga dolorum asperiores ipsam! Molestiae eveniet temporibus dolore.
+      </p>
+      <p>
+      Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus.
+      Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
+      inceptos himenaeos.
+      </p>
+    </div>
+  </div> 
+</div> 
+<!--Progressbar....................................-->
+<div id="progress">
+<div id="dialog" title="File Download">
+  <div class="progress-label">Starting download...</div>
+  <div id="progressbar"></div>
+</div>
+<button id="downloadButton">Start Download</button>
+</div>
+</div>
+</body>
+</html>
